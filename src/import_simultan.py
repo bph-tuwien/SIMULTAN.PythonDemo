@@ -1,3 +1,6 @@
+from pythonnet import load
+load("coreclr") # load net core
+
 import clr
 import os
 

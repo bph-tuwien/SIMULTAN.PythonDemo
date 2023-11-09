@@ -5,7 +5,7 @@ import f_int
 servicesProvider = ServicesProvider()
 servicesProvider.AddService[IAuthenticationService](Python_AuthenticationService())
 projectData = ExtendedProjectData()
-projectFile = FileInfo('C:\\Soft_Dev_Prj\\HAM4D_VIE_Py_Simultan_Input\\test.simultan')
+projectFile = FileInfo('src\\test.simultan')
 project = ZipProjectIO.Load(projectFile, projectData)
 isAuthenticated = ZipProjectIO.AuthenticateUserAfterLoading(project, projectData, servicesProvider)
 
