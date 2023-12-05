@@ -1,13 +1,18 @@
-from import_simultan import *
+from utils.import_simultan import *
 
 class Python_AuthenticationService(IAuthenticationService):
 
+    
+    def __init__(self, username, password):
+        self.username = username
+        self.password = password
+        
     __namespace__ = "new_namespace"
 
     def Authenticate(self, user_manager, project_file):
 
-        user_name = 'admin'
-        password = 'admin'
+        user_name = self.username
+        password = self.password
 
         sec_str = SecureString()
 

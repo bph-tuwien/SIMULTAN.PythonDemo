@@ -1,4 +1,4 @@
-from import_simultan import *
+from utils.import_simultan import *
 
 def f_int(project_data):
 

@@ -1,13 +1,22 @@
-from import_simultan import *
-from classes_authentication_service import *
-import f_int
+from utils.import_simultan import *
+from utils.classes_authentication_service import *
+
+#Importing functions to run 
+from functions.f_int import *
+from functions.handle_geometry import *
+
+#'src\\projects\\test.simultan'
+FILE_PATH = 'src\\projects\\geometry.simultan'
+USERNAME = 'admin'
+PASSWORD = 'admin'
+
 
 servicesProvider = ServicesProvider()
-servicesProvider.AddService[IAuthenticationService](Python_AuthenticationService())
+servicesProvider.AddService[IAuthenticationService](Python_AuthenticationService(USERNAME, PASSWORD))
 projectData = ExtendedProjectData()
-projectFile = FileInfo('src\\test.simultan')
+projectFile = FileInfo(FILE_PATH)
 project = ZipProjectIO.Load(projectFile, projectData)
-isAuthenticated = ZipProjectIO.AuthenticateUserAfterLoading(project, projectData, servicesProvider)
+isAuthenticated = ZipProjectIO.AuthenticateUserAfterLoading(project, projectData, servicesProvider )
 
 if isAuthenticated != True:
     print('Authentication failed')
@@ -15,8 +24,9 @@ if isAuthenticated != True:
 
 ZipProjectIO.OpenAfterAuthentication(project, projectData)
 
-print(f_int.f_int(projectData))
-
+#Call your function here
+#print(f_int.f_int(projectData))
+print(handle_geometry(projectData))
 
 # Here we close the project
 # -------------------------
