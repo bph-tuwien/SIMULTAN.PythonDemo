@@ -1,5 +1,5 @@
-from utils.import_simultan import *
-from utils.classes_authentication_service import *
+from import_simultan import *
+from classes_authentication_service import *
 
 #Importing functions to run 
 from functions.f_int import *

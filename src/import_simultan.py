@@ -10,6 +10,7 @@ clr.AddReference(simultan_sdk_var+'\\SIMULTAN.dll')    # the dll
 
 from SIMULTAN.Data import *
 from SIMULTAN.Data.Geometry import *
+from SIMULTAN.Data.Components import *
 from SIMULTAN.Data.Users import *
 from SIMULTAN.Projects import *
 from SIMULTAN.Utils import *

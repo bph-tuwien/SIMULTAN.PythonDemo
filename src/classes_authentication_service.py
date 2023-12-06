@@ -1,4 +1,4 @@
-from utils.import_simultan import *
+from import_simultan import *
 
 class Python_AuthenticationService(IAuthenticationService):
 

@@ -1,4 +1,4 @@
-from utils.import_simultan  import *
+from import_simultan  import *
 from SIMULTAN.Serializer.SimGeo import *
 
 # The entry point function´s name has to be the same as the [name].py script´s name
@@ -10,7 +10,6 @@ def handle_geometry(project_data):
     resource_to_open = next(filter(lambda item: item.Name  == 'geometry.simgeo', project_data.AssetManager.Resources))
     
     # Load the geometry model
-	# Check if the geometry is open already // only necceserry f
     model = SimGeoIO.Load(resource_to_open, project_data, None)
 
 
@@ -48,12 +47,31 @@ def handle_geometry(project_data):
     siteplanner_project = project_data.SitePlannerManager.GetSitePlannerProjectByFile(resource_to_open.File)
     building = siteplanner_project.Buildings[0]
     building_components = project_data.ComponentGeometryExchange.GetComponents(building)
-
+    building_components = list(building_components) #Converting the C# IEnumerable<T> to a python list
+    first_component = building_components[0]
+    comp_instance = list(first_component.Instances)[0]
+   
     # Component.InstanceParameters 
+    instance_parameters = list(comp_instance.InstanceParameterValuesPersistent)
+    for parameter in instance_parameters:
+        print(f'{parameter.Key.NameTaxonomyEntry.TextOrKey}: {parameter.Value}') # Getting the name of a parameter and the value
+        
+	    
+	# Change the value of the "DoubleParameter"
+    # double_parameter =  next(filter(lambda item: item.NameTaxonomyEntry.TextOrKey  == 'DoubleParameter', first_component.Parameters))
+    print(double_parameter.Value)
+    # double_parameter.Value = 11.0 # assign value to the parameter
+	
+    print(double_parameter.Value)
+    
+    # Make some modifications to an Instance Parameter of the "DoubleParameter"
+    double_instance_param = next(filter(lambda item: item.Key.NameTaxonomyEntry.TextOrKey == 'DoubleParameter', instance_parameters))
+    comp_instance.InstanceParameterValuesPersistent[double_instance_param.Key]=  8.9  #Change the value of the Instance parameter (does not effect the Parameter)
+    print(f'{double_instance_param.Key.NameTaxonomyEntry.TextOrKey}: {comp_instance.InstanceParameterValuesPersistent[double_instance_param.Key]}')
 
 
     # Save the changes
-    SimgeoIO.Save(model, resource_to_open, WriteMode.Plaintext)
+    SimGeoIO.Save(model, resource_to_open, SimGeoIO.WriteMode.Plaintext)
 
 
     
