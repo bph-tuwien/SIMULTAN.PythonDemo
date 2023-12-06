@@ -22,6 +22,10 @@ password: admin, as it can be seen
 in the static variables in the main.py file.
 
 ```
-cd [PATH_TO_FOLDER]
-pip install -r src/requirements.txt
+cd [PATH_TO_FOLDER]/src
+python main.py run
+
 ```
+
+Depending on which function is called "f_int" or "handle_geometry" in the main.py script the python is executed on the defined project.
+The project is also defiend as a static variable in the main.py file.
