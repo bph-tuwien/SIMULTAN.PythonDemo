@@ -5,7 +5,7 @@ from classes_authentication_service import *
 from f_int import *
 from handle_geometry import *
 
-#'src\\projects\\test.simultan'
+#'test.simultan'
 FILE_PATH = 'geometry.simultan'
 USERNAME = 'admin'
 PASSWORD = 'admin'
