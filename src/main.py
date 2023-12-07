@@ -2,8 +2,8 @@ from import_simultan import *
 from classes_authentication_service import *
 
 #Importing functions to run 
-from functions.f_int import *
-from functions.handle_geometry import *
+from f_int import *
+from handle_geometry import *
 
 #'src\\projects\\test.simultan'
 FILE_PATH = 'src\\projects\\geometry.simultan'
