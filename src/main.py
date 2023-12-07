@@ -6,7 +6,7 @@ from f_int import *
 from handle_geometry import *
 
 #'src\\projects\\test.simultan'
-FILE_PATH = 'src\\projects\\geometry.simultan'
+FILE_PATH = 'geometry.simultan'
 USERNAME = 'admin'
 PASSWORD = 'admin'
 
