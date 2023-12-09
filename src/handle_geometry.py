@@ -57,12 +57,6 @@ def handle_geometry(project_data):
         print(f'{parameter.Key.NameTaxonomyEntry.TextOrKey}: {parameter.Value}') # Getting the name of a parameter and the value
         
 	    
-	# Change the value of the "DoubleParameter"
-    # double_parameter =  next(filter(lambda item: item.NameTaxonomyEntry.TextOrKey  == 'DoubleParameter', first_component.Parameters))
-    print(double_parameter.Value)
-    # double_parameter.Value = 11.0 # assign value to the parameter
-	
-    print(double_parameter.Value)
     
     # Make some modifications to an Instance Parameter of the "DoubleParameter"
     double_instance_param = next(filter(lambda item: item.Key.NameTaxonomyEntry.TextOrKey == 'DoubleParameter', instance_parameters))
