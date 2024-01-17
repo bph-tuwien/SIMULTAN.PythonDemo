@@ -3,11 +3,13 @@ from SIMULTAN.Serializer.SimGeo import *
 
 # The entry point function´s name has to be the same as the [name].py script´s name
 # This function aims to access a geometry found in the project_data and access it´s proeprties and parts
-def handle_geometry(project_data):
+def handle_geometry(project, project_data):
 
 
 	# Find the geometry file in the resources of the project_data
     resource_to_open = next(filter(lambda item: item.Name  == 'geometry.simgeo', project_data.AssetManager.Resources))
+    # Registering the model to the data manager to have active connection between geometry and components
+    project.AllProjectDataManagers.GeometryModels.AddGeometryModel(resource_to_open) 
     
     # Load the geometry model
     model = SimGeoIO.Load(resource_to_open, project_data, None)

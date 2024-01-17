@@ -26,7 +26,7 @@ ZipProjectIO.OpenAfterAuthentication(project, projectData)
 
 #Call your function here
 #print(f_int.f_int(projectData))
-print(handle_geometry(projectData))
+print(handle_geometry(project, projectData))
 
 # Here we close the project
 # -------------------------
