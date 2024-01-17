@@ -26,6 +26,18 @@ def handle_geometry(project, project_data):
     faces = model.Geometry.Faces    # Consists of an edge_loop , can have components attached
     volumes = model.Geometry.Volumes # Consists of faces, can have components attached
     
+
+
+	#GeometryRelations
+    realations = project_data.GeometryRelations
+    source = project_data.GeometryRelations[0].Source #SimBaseGeometryReference
+    target = project_data.GeometryRelations[0].Target #SimBaseGeometryReference
+    
+    source_id = source.BaseGeometryId
+    target_id = target.BaseGeometryId
+    
+    source_geometry = next(filter(lambda x: x.Id == source_id, all_geometries), None)
+
     
     # Getting a volume fomr the mdel and inspecting it´s properties
 		# Basic calculations
