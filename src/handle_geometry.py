@@ -8,12 +8,12 @@ def handle_geometry(project, project_data):
 
 	# Find the geometry file in the resources of the project_data
     resource_to_open = next(filter(lambda item: item.Name  == 'geometry.simgeo', project_data.AssetManager.Resources))
-    # Registering the model to the data manager to have active connection between geometry and components
-    project.AllProjectDataManagers.GeometryModels.AddGeometryModel(resource_to_open) 
+
     
     # Load the geometry model
     model = SimGeoIO.Load(resource_to_open, project_data, None)
-
+    # Registering the model to the data manager to have active connection between geometry and components
+    project.AllProjectDataManagers.GeometryModels.AddGeometryModel(model) 
 
     # Explore the geometry
     all_geometries = model.Geometry.Geometries # listing all geometries in the model regardless of it´s type
