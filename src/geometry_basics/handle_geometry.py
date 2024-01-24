@@ -1,4 +1,4 @@
-from import_simultan  import *
+from common.import_simultan  import *
 from SIMULTAN.Serializer.SimGeo import *
 
 # The entry point function´s name has to be the same as the [name].py script´s name

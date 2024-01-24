@@ -1,12 +1,15 @@
-from import_simultan import *
-from classes_authentication_service import *
+# Append search directory for common code
+import sys, os
+sys.path.append(os.path.dirname(__file__) + '\\..')
+
+from common.import_simultan import *
+from common.classes_authentication_service import *
 
 #Importing functions to run 
 from f_int import *
-from handle_geometry import *
 
 #'test.simultan'
-FILE_PATH = 'geometry.simultan'
+FILE_PATH = os.path.dirname(__file__) + '\\test.simultan'
 USERNAME = 'admin'
 PASSWORD = 'admin'
 
@@ -25,8 +28,7 @@ if isAuthenticated != True:
 ZipProjectIO.OpenAfterAuthentication(project, projectData)
 
 #Call your function here
-#print(f_int.f_int(projectData))
-print(handle_geometry(project, projectData))
+print(f_int(projectData))
 
 # Here we close the project
 # -------------------------

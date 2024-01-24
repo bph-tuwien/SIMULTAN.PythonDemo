@@ -14,18 +14,25 @@ pip install -r src/requirements.txt
 
 ## Run Python
 
-Basically to run the scripts from python, the main.py must be started.
-main.py handles the opening of a .simultan project as well as user authentication.
-By default, the .simulta proejcts attached to the demo have
+Basically to run the scripts from python, the main.py in each example subfolder must be started.
+Depending on the example, main.py handles the opening of a .simultan project as well as user authentication.
+By default, the .simultan proejcts attached to the demo have
 username: admin,
-password: admin, as it can be seen
-in the static variables in the main.py file.
+password: admin, as can be seen
+in the static variables in the main.py files.
 
 ```
-cd [PATH_TO_FOLDER]/src
+cd [PATH_TO_FOLDER]/src/[EXAMPLE]/
 python main.py run
 
 ```
 
-Depending on which function is called "f_int" or "handle_geometry" in the main.py script the python is executed on the defined project.
-The project is also defiend as a static variable in the main.py file.
+## Examples
+
+### project_loading
+
+This example shows how to load a project and execute a method `f_int(...)` which replaces the name of the first component. It shows how to open a simultan project file and authenticate a user.
+
+### geometry_basics
+
+This examples shows how to open a geometry file, register the GeometryModel in the project and print some geometric measurements of a volume
