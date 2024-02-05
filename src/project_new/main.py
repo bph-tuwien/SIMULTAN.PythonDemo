@@ -17,6 +17,7 @@ passwordHash = SimUsersManager.HashPassword(passwordArray)
 initialUser = SimUser(Guid.NewGuid(), USERNAME, passwordHash, encryptedEncryptionKey, SimUserRole.ADMINISTRATOR)
 
 # Choose a folder in which files are temporarily placed during project creation
+# Pick a guid named folder in the systems temporary folder
 tempPath = Path.GetTempPath()
 
 # Create ProjectData and project file
