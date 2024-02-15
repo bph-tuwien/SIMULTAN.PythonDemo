@@ -3,6 +3,27 @@ from SIMULTAN.Serializer.SimGeo import *
 
 # The entry point function´s name has to be the same as the [name].py script´s name
 # This function aims to access a geometry found in the project_data and access it´s proeprties and parts
+
+def handle_geometry_new(project, project_data):
+    # Building
+    siteplanner_filename = 'bruck_gebaeude_epsg4326_wgs84_20230809.spdxf'
+    # siteplanner_filename = 'bruck_gebaeude_epsg4326_wgs84_20230809'
+    project_data_folder_name = 'bruck_gebaeude_epsg4326_wgs84_20230809'
+    project_folder = next(filter(lambda item: item.Name == project_data_folder_name, project_data.AssetManager.Resources))
+    resource_to_open = next(filter(lambda item: item.Name == siteplanner_filename,  project_folder.Children))
+
+   # resource_to_open = next(filter(lambda item: item.Name == project_data_folder_name, project_data.AssetManager.Resources))
+
+    siteplanner_project = project_data.SitePlannerManager.GetSitePlannerProjectByFile(resource_to_open.File)
+    building = siteplanner_project.Buildings[0]
+    building_components = project_data.ComponentGeometryExchange.GetComponents(building)
+    building_components = list(building_components)  # Converting the C# IEnumerable<T> to a python list
+
+    # project.AllProjectDataManagers.GeometryModels.AddGeometryModel(model)
+
+
+
+
 def handle_geometry(project, project_data):
 
 
@@ -30,7 +51,7 @@ def handle_geometry(project, project_data):
 
 	#GeometryRelations
     realations = project_data.GeometryRelations
-    source = project_data.GeometryRelations[0].Source #SimBaseGeometryReference
+    source = project_data.GometryRelations[0].Source #SimBaseGeometryReference
     target = project_data.GeometryRelations[0].Target #SimBaseGeometryReference
     
     source_id = source.BaseGeometryId

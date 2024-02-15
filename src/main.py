@@ -6,7 +6,9 @@ from f_int import *
 from handle_geometry import *
 
 #'test.simultan'
-FILE_PATH = 'geometry.simultan'
+FILE_PATH = r'C:\Users\Simon Hinterseer\Desktop\simultan\Data_Bruck\SmartQBruckTestData.simultan'
+# C:\Users\Simon Hinterseer\Desktop\simultan\Data_Bruck\SmartQBruckTestData.simultan
+# FILE_PATH = r'C:\Users\Simon Hinterseer\Desktop\simultan\Data_Bruck\SMARTQBruck.simultan'
 USERNAME = 'admin'
 PASSWORD = 'admin'
 
@@ -26,7 +28,8 @@ ZipProjectIO.OpenAfterAuthentication(project, projectData)
 
 #Call your function here
 #print(f_int.f_int(projectData))
-print(handle_geometry(project, projectData))
+# print(handle_geometry(project, projectData))
+print(handle_geometry_new(project, projectData))
 
 # Here we close the project
 # -------------------------
