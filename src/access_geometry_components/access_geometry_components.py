@@ -21,7 +21,7 @@ def access_geometry_components(project, project_data):
     # Getting a volume fomr the mdel and inspecting it´s properties
 		# Basic calculations
     first_volume = volumes[0]
-    volume_components = list(project_data.ComponentGeometryExchange.GetComponents(first_volume))
+    volume_components = list(project_data.ComponentGeometryExchange.GetComponents(first_volume)) # this works with every geometry
 
     
 
