@@ -29,7 +29,7 @@ def handle_geometry(project, project_data):
 
 
 	#GeometryRelations
-    realations = project_data.GeometryRelations
+    relations = project_data.GeometryRelations
     source = project_data.GeometryRelations[0].Source #SimBaseGeometryReference
     target = project_data.GeometryRelations[0].Target #SimBaseGeometryReference
     
