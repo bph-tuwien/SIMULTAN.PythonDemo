@@ -22,6 +22,12 @@ def access_geometry_components(project, project_data):
 		# Basic calculations
     first_volume = volumes[0]
     volume_components = list(project_data.ComponentGeometryExchange.GetComponents(first_volume)) # this works with every geometry
+    
+    first_components = volume_components[0]
+    
+    for component in volume_components:
+        for parameter in component.Parameters:
+         print(f'{parameter.NameTaxonomyEntry.TextOrKey}: {parameter.Value}') # Getting the name of a parameter and the value
 
     
 
