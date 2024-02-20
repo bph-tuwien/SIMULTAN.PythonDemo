@@ -10,12 +10,12 @@ def create_new_geometry(project, projectData, name= "New Geometry"):
 	model_to_work_with = SimGeoIO.Load(resourceFile, projectData, None) # Load the geometry model
 
 
-	layer =  Layer(model_to_work_with, "New Layer") # Adding a laer to the empty model
-	model_to_work_with.Layers.Add(layer)
+	#layer =  Layer(model_to_work_with, "New Layer") # Adding a laer to the empty model
+	#model_to_work_with.Layers.Add(layer)
 
 
-	position = SimPoint3D(0,0,0)
-	vertex = Vertex(layer, "New Vertex", position)
+	#position = SimPoint3D(0,0,0)
+	#vertex = Vertex(layer, "New Vertex", position)
 
 	return model_to_work_with
 
