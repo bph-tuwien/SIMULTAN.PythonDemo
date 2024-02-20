@@ -38,6 +38,7 @@ print(create_new_geometry(project, projectData))
 project.DisableProjectUnpackFolderWatcher();
 # Save it
 ZipProjectIO.Save(project, True);
+
 # //Close the project, undoes the Open operation
 ZipProjectIO.Close(project, True);
 # //Unload the project, undoes the Load operation
