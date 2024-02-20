@@ -1,5 +1,5 @@
 from common.import_simultan  import *
-from SIMULTAN.Data.Geometry import Layer,Vertex, Edge, EdgeLoop, Face, FaceAlgorithms, Volume
+from SIMULTAN.Data.Geometry import Layer,Vertex, Edge, EdgeLoop, Face, FaceAlgorithms, Volume, GeometricOrientation
 from SIMULTAN.Serializer.SimGeo import SimGeoIO
 from SIMULTAN.Data.SimMath import  SimPoint3D
 from  System.Collections.Generic import List
@@ -66,9 +66,8 @@ def create_new_geometry(project, projectData, name= "New Geometry"):
 	edgesList.Add(edge34)
 	edgesList.Add(edge41)
 
-	egeLoop = EdgeLoop(layer, "edgeloop", edgesList) 	#The edgeloop giving the borders of the polyline
-	face = Face(layer, "Face", egeLoop) 				#Creating a face 
-
+	egeLoop = EdgeLoop(layer, "edgeloop", edgesList) 	# The edgeloop giving the borders of the polyline
+	face = Face(layer, "Face", egeLoop) 				# Creating a face 
 
 	#Extruding the Face to get a Volume:
 	faces = List[Face]()
@@ -97,5 +96,3 @@ def create_new_geometry(project, projectData, name= "New Geometry"):
 
 
 	return geometry
-
-
