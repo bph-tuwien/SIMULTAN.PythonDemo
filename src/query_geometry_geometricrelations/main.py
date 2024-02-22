@@ -9,7 +9,9 @@ from common.classes_authentication_service import *
 from query_geometry_geometricrelations import *
 
 #'test.simultan'
-FILE_PATH = os.path.dirname(__file__) + '\\Bruck100WithoutExtension.simultan'
+# FILE_PATH = os.path.dirname(__file__) + '\\Bruck100WithoutExtension.simultan'
+FILE_PATH = os.path.dirname(__file__) + '\\RelationImportTest.simultan'
+
 USERNAME = 'admin'
 PASSWORD = 'admin'
 

@@ -3,9 +3,35 @@ from SIMULTAN.Data.Geometry import *
 from SIMULTAN.Serializer.SimGeo import *
 from SIMULTAN.Data.Assets import *
 import numpy as np
+import matplotlib.pyplot as plt
 
 import SIMULTAN.Data.SimMath as sm
 from System.Collections.Generic import List
+
+
+import matplotlib.pyplot as plt
+
+def plot_polygon(vertices, closed=True):
+    """
+    Plot a polygon defined by its vertices.
+
+    Parameters:
+    - vertices: List of (x, y) coordinates representing the vertices of the polygon.
+    - closed: Whether the polygon should be closed (connect the last vertex to the first). Default is True.
+    """
+    x, y = zip(*vertices)
+    if closed:
+        x = list(x) + [x[0]]
+        y = list(y) + [y[0]]
+
+    plt.plot(x, y, marker='o')
+    plt.xlabel('X-axis')
+    plt.ylabel('Y-axis')
+    plt.title('Polygon Plot')
+    plt.grid(True)
+    plt.axis('equal')
+    plt.show()
+
 
 
 def rotate_by_degrees(np_vector, degrees):
@@ -122,7 +148,15 @@ def my_script(project_data, siteplanner_project):
     x=0
 
     # check plausibility: copied the polyline of the building 4373 from the geojason file...
-    polyline_4373 = [[16.770242159243402, 48.03267471753271], [16.77032460939326, 48.03265356788971], [16.770282760198892, 48.03258017384838], [16.77020031014858, 48.03260132346129], [16.770242159243402, 48.03267471753271]]
+    polyline_4373 = [[16.770242159243402, 48.03267471753271],
+                     [16.77032460939326, 48.03265356788971],
+                     [16.770282760198892, 48.03258017384838],
+                     [16.77020031014858, 48.03260132346129],
+                     [16.770242159243402, 48.03267471753271]]
+
+    polyline_4373_warped = [[vtx[0] * np.sin(np.pi/2 - vtx[1]*np.pi/180.), vtx[1]] for vtx in polyline_4373]
+    plot_polygon(polyline_4373_warped)
+
     # get the directions of the edges and normalize them
     diff_vecs_4373 = []
     for i in range(len(polyline_4373) - 1):
