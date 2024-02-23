@@ -3,10 +3,10 @@ from SIMULTAN.Data.Geometry import *
 from SIMULTAN.Serializer.SimGeo import *
 from SIMULTAN.Data.Assets import *
 
-def query_geometry_geometricrelations(project, project_data, name= "New Geometry"):
+#Lists the "geb_id"s of BuildingComponents which have a geometric relation to the Buildings geometry
+def query_geometry_geometricrelations(project, project_data):
     
-    folder = next(filter(lambda item: isinstance(item, ResourceDirectoryEntry), project_data.AssetManager.Resources))
-    siteplanner_file = next(filter(lambda item: item.Name.endswith(".spdxf"), folder.Children))
+    siteplanner_file = next(filter(lambda item: item.Name.endswith(".spdxf"), project_data.AssetManager.Resources))
     siteplanner_project = project_data.SitePlannerManager.GetSitePlannerProjectByFile(siteplanner_file.File)
 
     buildings = siteplanner_project.Buildings
@@ -27,14 +27,6 @@ def query_geometry_geometricrelations(project, project_data, name= "New Geometry
                 adjacencies = adjacencies + adjacent_gebids
         if len(adjacencies) > 0:
            print(f'building id: {building_gebid}, adajcent_buildings: {adjacencies}')
-            
-        
-
-        #project.AllProjectDataManager.GeometryModels.RemoveGeometryModel(building_geometry)
- 
-
-
-
 
 
     # Exmample for getting buildings efficiently based on the relations
@@ -43,6 +35,7 @@ def query_geometry_geometricrelations(project, project_data, name= "New Geometry
         target_building = next(filter(lambda item: item.GeometryModelRes.ResourceFile.Key == relation.Target.FileId, buildings))
         
         
+
 
 
 # Function to get the value of a parameter attached to the component of the building
@@ -56,7 +49,8 @@ def get_building_component_parameter_value_by_name(building, project_data, param
   
 
 
-
+# Returns the list of "geb_id" of the adjacent buildings. 
+# NOTE: geb_id is a parameter in the component attached to the building
 def get_adjacent_building_gebid(pface, project_data, siteplanner_project):
     adjacent_buildings = get_adjacent_buildings(pface, project_data, siteplanner_project)
     geb_ids = []
@@ -68,7 +62,7 @@ def get_adjacent_building_gebid(pface, project_data, siteplanner_project):
         
 
 
-
+# Returns SitePlanner buildings which have a GeometricRelation to the pface
 def get_adjacent_buildings(pface, project_data, siteplanner_project):
     adjacent_buildings = []
     face_relations = filter(
