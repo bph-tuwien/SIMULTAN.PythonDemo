@@ -34,11 +34,11 @@ print(f_int(projectData))
 # -------------------------
 
 # //Disable folder watcher so they don't interfere with project closing
-project.DisableProjectUnpackFolderWatcher();
+project.DisableProjectUnpackFolderWatcher()
 # //Close the project, undoes the Open operation
-ZipProjectIO.Close(project, True);
+ZipProjectIO.Close(project, True)
 # //Unload the project, undoes the Load operation
-ZipProjectIO.Unload(project);
+ZipProjectIO.Unload(project)
 # //Free all data from the project
-projectData.Reset();
+projectData.Reset()
 
